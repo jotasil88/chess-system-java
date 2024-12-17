@@ -21,13 +21,13 @@ public class Board {
 		return columns;
 	}
 	
-//	public Piece piece(int row, int column) {
-//		
-//	}
-//
-//	public Piece piece(int row, Position position) {
-//		
-//	}
+	public Piece piece(int row, int column) {
+		return pieces[row][column];
+	}
+
+	public Piece piece(Position position) {
+		return piece(position.getRow(), position.getColumn());
+	}
 //	
 //
 //	public void placePiece(Piece piece, Position position) {

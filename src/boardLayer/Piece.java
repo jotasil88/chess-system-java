@@ -1,6 +1,6 @@
 package boardLayer;
 
-public class Piece {
+public abstract class Piece {
 	
 	protected Position position;
 	
