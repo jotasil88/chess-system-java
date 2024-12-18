@@ -1,6 +1,10 @@
 package chessLayer;
 
 import boardLayer.Board;
+import boardLayer.Piece;
+import boardLayer.Position;
+import chessLayer.pieces.King;
+import chessLayer.pieces.Rook;
 
 public class ChessMatch {
 
@@ -15,8 +19,8 @@ public class ChessMatch {
 
 	public ChessMatch() {
 		board = new Board(8, 8);
-		turn = 0;
 		currentPlayer = Color.WHITE;
+		initialSetup();
 	}
 
 	public int getTurn() {
@@ -63,4 +67,13 @@ public class ChessMatch {
 //	public ChessPiece replacePromotedPiece(String type) {
 //		
 //	}
+	
+	private void initialSetup() {
+		board.placePiece(new Rook(board, Color.BLACK), new Position(0, 0));
+		board.placePiece(new King(board, Color.BLACK), new Position(0, 1));
+		board.placePiece(new Rook(board, Color.WHITE),new Position(0, 2));
+		
+	}
+	
+//	private void newPlacePiece()
 }

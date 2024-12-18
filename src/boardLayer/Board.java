@@ -28,12 +28,12 @@ public class Board {
 	public Piece piece(Position position) {
 		return piece(position.getRow(), position.getColumn());
 	}
-//	
-//
-//	public void placePiece(Piece piece, Position position) {
-//		
-//	}
-//
+
+	public void placePiece(Piece piece, Position position) {
+		piece.position = position;
+		pieces[position.getRow()][position.getColumn()] = piece;
+	}
+
 //	public Piece removePiece(Position position) {
 //		
 //	}
