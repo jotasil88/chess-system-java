@@ -9,7 +9,7 @@ public class Board {
 
 	public Board(int rows, int columns) {
 		if (rows < 1 && columns < 1) {
-			throw new BoardException("Erro ao criar tabuleiro: O tabuleiro deve ter ao menos 1 linha e 1 coluna! (" + rows + ", " + columns + ")");
+			throw new BoardException("Failed to create a board, boards must have at least 1 column and 1 row! (input: " + rows + ", " + columns + ")");
 		}
 		this.rows = rows;
 		this.columns = columns;
@@ -27,7 +27,7 @@ public class Board {
 	public Piece piece(int row, int column) {
 		Position p = new Position(row, column);
 		if (!positionExists(p)) {
-			throw new BoardException("Erro ao retornar a peca: Essa posicao nao existe no tabuleiro! (" + p + ")");
+			throw new BoardException("failed to return the piece: position informed doesnt exist on the board! (input: " + p + ")");
 		}
 
 		return pieces[row][column];
@@ -39,7 +39,7 @@ public class Board {
 
 	public void placePiece(Piece piece, Position position) {
 		if (thereIsAPiece(position)) {
-			throw new BoardException("Erro ao colocar a peca: Ja existe uma peca nessa posição! (" + position + ")");
+			throw new BoardException("failed to place the piece: target position is occupied! (input: " + position + ")");
 		}
 
 		piece.position = position;
@@ -60,7 +60,7 @@ public class Board {
 
 	public boolean thereIsAPiece(Position position) {
 		if (!positionExists(position)) {
-			throw new BoardException("Erro ao verficar a peca: Essa posicao nao existe no tabuleiro! (" + position + ")");
+			throw new BoardException("failed to verify if there is a piece: position doesnt exist on the board! (input: " + position + ")");
 		}
 		
 		return piece(position) != null;

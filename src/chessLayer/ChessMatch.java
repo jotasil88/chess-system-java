@@ -14,7 +14,7 @@ public class ChessMatch {
 	private boolean checkMate;
 	private ChessPiece enPassantVunerable;
 	private ChessPiece promoted;
-	
+
 	private Board board;
 
 	public ChessMatch() {
@@ -42,20 +42,18 @@ public class ChessMatch {
 	public Board getBoard() {
 		return board;
 	}
-	
-	
+
 	public ChessPiece[][] getPieces() {
 		ChessPiece[][] mat = new ChessPiece[board.getRows()][board.getColumns()];
 		for (int i = 0; i < board.getRows(); i++) {
 			for (int j = 0; j < board.getColumns(); j++) {
-				ChessPiece p = ((ChessPiece) board.piece(i, j));
 				mat[i][j] = ((ChessPiece) board.piece(i, j));
 			}
 		}
-		
+
 		return mat;
 	}
-	
+
 //	public boolean[][] possibleMoves(ChessPosition sourcePosition) {
 //		
 //	}
@@ -67,13 +65,15 @@ public class ChessMatch {
 //	public ChessPiece replacePromotedPiece(String type) {
 //		
 //	}
-	
+
 	private void initialSetup() {
-		board.placePiece(new Rook(board, Color.BLACK), new Position(0, 7));
-		board.placePiece(new King(board, Color.BLACK), new Position(0, 1));
-		board.placePiece(new Rook(board, Color.WHITE),new Position(0, 1));
+		placeNewPiece(new Rook(board, Color.BLACK), 'a', 1);
+		placeNewPiece(new King(board, Color.BLACK), 'b', 2);
+		placeNewPiece(new Rook(board, Color.WHITE), 'c', 3);
 		
 	}
-	
-//	private void newPlacePiece()
+
+	private void placeNewPiece(Piece piece, char column, int row) {
+		board.placePiece(piece, new ChessPosition(column, row).toPosition());
+	}
 }
